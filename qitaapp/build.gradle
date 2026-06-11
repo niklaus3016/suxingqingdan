@@ -24,10 +24,10 @@ task deleteAdaptiveIconConfigs {
 preBuild.dependsOn deleteAdaptiveIconConfigs
 
 android { 
-    namespace = "com.suxingqingdan.app" 
+    namespace = "com.yuexuxingzuo.app" 
     compileSdk = rootProject.ext.compileSdkVersion 
     defaultConfig { 
-        applicationId "com.suxingqingdan.app" 
+        applicationId "com.yuexuxingzuo.app" 
         minSdkVersion rootProject.ext.minSdkVersion 
         targetSdkVersion rootProject.ext.targetSdkVersion 
         versionCode 1 
@@ -54,11 +54,10 @@ android {
     // 添加签名配置
     signingConfigs {
         release {
-            // Support both injected parameters from CI and local gradle.properties
-            storeFile file(project.hasProperty('android.injected.signing.store.file') ? project.property('android.injected.signing.store.file') : '../my-release-key.keystore')
-            storePassword project.hasProperty('android.injected.signing.store.password') ? project.property('android.injected.signing.store.password') : (System.getenv('KEYSTORE_PASSWORD') ?: '123456')
-            keyAlias project.hasProperty('android.injected.signing.key.alias') ? project.property('android.injected.signing.key.alias') : 'suxingqingdan'
-            keyPassword project.hasProperty('android.injected.signing.key.password') ? project.property('android.injected.signing.key.password') : (System.getenv('KEYSTORE_PASSWORD') ?: '123456')
+            storeFile file('../my-release-key.keystore')
+            storePassword System.getenv('KEYSTORE_PASSWORD') ?: '123456'
+            keyAlias 'yuexuxingzuo'
+            keyPassword System.getenv('KEYSTORE_PASSWORD') ?: '123456'
             v1SigningEnabled true
             v2SigningEnabled true
             storeType 'JKS'
