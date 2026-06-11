@@ -63,7 +63,7 @@ jobs:
         echo "Run # 将 base64 编码的 keystore 还原为文件"
         echo "# 将 base64 编码的 keystore 还原为文件"
         echo ""
-        full_output=$(keytool -list -v -keystore my-release-key.keystore -alias mengxutaluo -storepass "${{ secrets.KEYSTORE_PASSWORD }}")
+        full_output=$(keytool -list -v -keystore my-release-key.keystore -alias suxingqingdan -storepass "${{ secrets.KEYSTORE_PASSWORD }}")
         
         sha1_with_colons=$(echo "$full_output" | grep -i "sha1:" | head -1 | sed 's/.*sha1:\s*//i' | sed 's/\s*$//')
         sha256_with_colons=$(echo "$full_output" | grep -i "sha256:" | head -1 | sed 's/.*sha256:\s*//i' | sed 's/\s*$//')
@@ -100,7 +100,7 @@ jobs:
         cd android
         echo "=== Building Release APK ==="
         ./gradlew clean
-        ./gradlew assembleRelease --no-build-cache --no-daemon -Pandroid.injected.signing.store.file=my-release-key.keystore -Pandroid.injected.signing.store.password="${{ secrets.KEYSTORE_PASSWORD }}" -Pandroid.injected.signing.key.alias=mengxutaluo -Pandroid.injected.signing.key.password="${{ secrets.KEYSTORE_PASSWORD }}"
+        ./gradlew assembleRelease --no-build-cache --no-daemon -Pandroid.injected.signing.store.file=my-release-key.keystore -Pandroid.injected.signing.store.password="${{ secrets.KEYSTORE_PASSWORD }}" -Pandroid.injected.signing.key.alias=suxingqingdan -Pandroid.injected.signing.key.password="${{ secrets.KEYSTORE_PASSWORD }}"
         ls -la app/build/outputs/apk/release/
 
     - name: Build Android Debug APK
