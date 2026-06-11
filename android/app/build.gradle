@@ -18,10 +18,11 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file(project.property("signing.storeFile"))
-            storePassword project.property("signing.storePassword")
-            keyAlias project.property("signing.keyAlias")
-            keyPassword project.property("signing.keyPassword")
+            // Support both injected parameters from CI and local gradle.properties
+            storeFile file(project.hasProperty('android.injected.signing.store.file') ? project.property('android.injected.signing.store.file') : project.property('signing.storeFile'))
+            storePassword project.hasProperty('android.injected.signing.store.password') ? project.property('android.injected.signing.store.password') : project.property('signing.storePassword')
+            keyAlias project.hasProperty('android.injected.signing.key.alias') ? project.property('android.injected.signing.key.alias') : project.property('signing.keyAlias')
+            keyPassword project.hasProperty('android.injected.signing.key.password') ? project.property('android.injected.signing.key.password') : project.property('signing.keyPassword')
         }
     }
     buildTypes {
