@@ -1,0 +1,6 @@
+{
+  "name": "速行清单",
+  "description": "极简、高效率的纯本地待办清单与备忘录应用，对标原生极简视效交互体验。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
